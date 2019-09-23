@@ -30,9 +30,8 @@
         <script src="js/rbush.min.js"></script>
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
-        <script src="data/NuevosBAP6_0.js"></script>
-        <script src="data/NuevosBAP5_1.js"></script>
-        <script src="data/NuevosBAP4_2.js"></script>
+        <script src="data/ArgentinaProvincias_1.js"></script>
+        <script src="data/BADepartamento_2.js"></script>
         <script src="data/MinasBAP6_3.js"></script>
         <script src="data/MinasBAP5_4.js"></script>
         <script src="data/MinasBAP4_5.js"></script>
@@ -43,24 +42,50 @@
         <script src="data/CanterasBAP6_10.js"></script>
         <script src="data/CanterasBAP5_11.js"></script>
         <script src="data/CanterasBAP4_12.js"></script>
-        <script src="data/ARGENTINA_latlong_WGS84_15.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[-43.29395987270715,-67.61373837143084],[-30.97969430808539,-53.40376525805688]]);
+        }).fitBounds([[-45.30423654638686,-70.84668397391333],[-34.376114683725014,-53.69471835425621]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
-        function pop_NuevosBAP6_0(feature, layer) {
+        var layer_googlesat_0 = L.tileLayer('http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}', {
+            opacity: 1.0,
+            attribution: '',
+        });
+        layer_googlesat_0;
+        map.addLayer(layer_googlesat_0);
+        function pop_ArgentinaProvincias_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>NOMBRE</strong><br />' + (feature.properties['NOMBRE'] !== null ? Autolinker.link(String(feature.properties['NOMBRE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PAIS'] !== null ? Autolinker.link(String(feature.properties['PAIS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">POBLACION</th>\
+                        <td>' + (feature.properties['POBLACION'] !== null ? Autolinker.link(String(feature.properties['POBLACION'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">TIPO</th>\
+                        <td>' + (feature.properties['TIPO'] !== null ? Autolinker.link(String(feature.properties['TIPO'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">SUP__KM2_</th>\
+                        <td>' + (feature.properties['SUP__KM2_'] !== null ? Autolinker.link(String(feature.properties['SUP__KM2_'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_NuevosBAP6_0_0() {
+        function style_ArgentinaProvincias_1_0() {
             return {
-                pane: 'pane_NuevosBAP6_0',
+                pane: 'pane_ArgentinaProvincias_1',
                 opacity: 1,
-                color: 'rgba(179,179,179,1.0)',
+                color: 'rgba(0,0,0,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
@@ -69,88 +94,157 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_NuevosBAP6_0');
-        map.getPane('pane_NuevosBAP6_0').style.zIndex = 400;
-        map.getPane('pane_NuevosBAP6_0').style['mix-blend-mode'] = 'normal';
-        var layer_NuevosBAP6_0 = new L.geoJson(json_NuevosBAP6_0, {
+        map.createPane('pane_ArgentinaProvincias_1');
+        map.getPane('pane_ArgentinaProvincias_1').style.zIndex = 401;
+        map.getPane('pane_ArgentinaProvincias_1').style['mix-blend-mode'] = 'normal';
+        var layer_ArgentinaProvincias_1 = new L.geoJson(json_ArgentinaProvincias_1, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_NuevosBAP6_0',
-            layerName: 'layer_NuevosBAP6_0',
-            pane: 'pane_NuevosBAP6_0',
-            onEachFeature: pop_NuevosBAP6_0,
-            style: style_NuevosBAP6_0_0,
+            dataVar: 'json_ArgentinaProvincias_1',
+            layerName: 'layer_ArgentinaProvincias_1',
+            pane: 'pane_ArgentinaProvincias_1',
+            onEachFeature: pop_ArgentinaProvincias_1,
+            style: style_ArgentinaProvincias_1_0,
         });
-        bounds_group.addLayer(layer_NuevosBAP6_0);
-        map.addLayer(layer_NuevosBAP6_0);
-        function pop_NuevosBAP5_1(feature, layer) {
+        bounds_group.addLayer(layer_ArgentinaProvincias_1);
+        map.addLayer(layer_ArgentinaProvincias_1);
+        function pop_BADepartamento_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cca'] !== null ? Autolinker.link(String(feature.properties['cca'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cde'] !== null ? Autolinker.link(String(feature.properties['cde'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fna'] !== null ? Autolinker.link(String(feature.properties['fna'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['gna'] !== null ? Autolinker.link(String(feature.properties['gna'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['nam'] !== null ? Autolinker.link(String(feature.properties['nam'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['sag'] !== null ? Autolinker.link(String(feature.properties['sag'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ara3'] !== null ? Autolinker.link(String(feature.properties['ara3'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['arl'] !== null ? Autolinker.link(String(feature.properties['arl'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_NuevosBAP5_1_0() {
+        function style_BADepartamento_2_0() {
             return {
-                pane: 'pane_NuevosBAP5_1',
+                pane: 'pane_BADepartamento_2',
                 opacity: 1,
-                color: 'rgba(179,179,179,1.0)',
-                dashArray: '',
+                color: 'rgba(146,146,146,1.0)',
+                dashArray: '1,5',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 2.0, 
+                weight: 1.0, 
                 fillOpacity: 0,
                 interactive: true,
             }
         }
-        map.createPane('pane_NuevosBAP5_1');
-        map.getPane('pane_NuevosBAP5_1').style.zIndex = 401;
-        map.getPane('pane_NuevosBAP5_1').style['mix-blend-mode'] = 'normal';
-        var layer_NuevosBAP5_1 = new L.geoJson(json_NuevosBAP5_1, {
+        map.createPane('pane_BADepartamento_2');
+        map.getPane('pane_BADepartamento_2').style.zIndex = 402;
+        map.getPane('pane_BADepartamento_2').style['mix-blend-mode'] = 'normal';
+        var layer_BADepartamento_2 = new L.geoJson(json_BADepartamento_2, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_NuevosBAP5_1',
-            layerName: 'layer_NuevosBAP5_1',
-            pane: 'pane_NuevosBAP5_1',
-            onEachFeature: pop_NuevosBAP5_1,
-            style: style_NuevosBAP5_1_0,
+            dataVar: 'json_BADepartamento_2',
+            layerName: 'layer_BADepartamento_2',
+            pane: 'pane_BADepartamento_2',
+            onEachFeature: pop_BADepartamento_2,
+            style: style_BADepartamento_2_0,
         });
-        bounds_group.addLayer(layer_NuevosBAP5_1);
-        map.addLayer(layer_NuevosBAP5_1);
-        function pop_NuevosBAP4_2(feature, layer) {
-        }
-
-        function style_NuevosBAP4_2_0() {
-            return {
-                pane: 'pane_NuevosBAP4_2',
-                opacity: 1,
-                color: 'rgba(179,179,179,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 2.0, 
-                fillOpacity: 0,
-                interactive: true,
-            }
-        }
-        map.createPane('pane_NuevosBAP4_2');
-        map.getPane('pane_NuevosBAP4_2').style.zIndex = 402;
-        map.getPane('pane_NuevosBAP4_2').style['mix-blend-mode'] = 'normal';
-        var layer_NuevosBAP4_2 = new L.geoJson(json_NuevosBAP4_2, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_NuevosBAP4_2',
-            layerName: 'layer_NuevosBAP4_2',
-            pane: 'pane_NuevosBAP4_2',
-            onEachFeature: pop_NuevosBAP4_2,
-            style: style_NuevosBAP4_2_0,
-        });
-        bounds_group.addLayer(layer_NuevosBAP4_2);
-        map.addLayer(layer_NuevosBAP4_2);
+        bounds_group.addLayer(layer_BADepartamento_2);
+        map.addLayer(layer_BADepartamento_2);
         function pop_MinasBAP6_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">nombre</th>\
+                        <td>' + (feature.properties['nombre'] !== null ? Autolinker.link(String(feature.properties['nombre'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">mineral</th>\
+                        <td>' + (feature.properties['mineral'] !== null ? Autolinker.link(String(feature.properties['mineral'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['productor'] !== null ? Autolinker.link(String(feature.properties['productor'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['estado'] !== null ? Autolinker.link(String(feature.properties['estado'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NOM__CATAS'] !== null ? Autolinker.link(String(feature.properties['NOM__CATAS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUPERFICIE'] !== null ? Autolinker.link(String(feature.properties['SUPERFICIE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIPO DEREC'] !== null ? Autolinker.link(String(feature.properties['TIPO DEREC'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">titular</th>\
+                        <td>' + (feature.properties['titular'] !== null ? Autolinker.link(String(feature.properties['titular'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PERTN.'] !== null ? Autolinker.link(String(feature.properties['PERTN.'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESERVAS'] !== null ? Autolinker.link(String(feature.properties['RESERVAS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CODIF.'] !== null ? Autolinker.link(String(feature.properties['CODIF.'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>expediente</strong><br />' + (feature.properties['expediente'] !== null ? Autolinker.link(String(feature.properties['expediente'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIPO DER_1'] !== null ? Autolinker.link(String(feature.properties['TIPO DER_1'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['t_CATEGOR�'] !== null ? Autolinker.link(String(feature.properties['t_CATEGOR�'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUSTANCIA'] !== null ? Autolinker.link(String(feature.properties['SUSTANCIA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TITULAR_2'] !== null ? Autolinker.link(String(feature.properties['TITULAR_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ESTADO_2'] !== null ? Autolinker.link(String(feature.properties['ESTADO_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['partido'] !== null ? Autolinker.link(String(feature.properties['partido'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PERTN._2'] !== null ? Autolinker.link(String(feature.properties['PERTN._2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESERVAS_2'] !== null ? Autolinker.link(String(feature.properties['RESERVAS_2'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
         function style_MinasBAP6_3_0() {
             return {
                 pane: 'pane_MinasBAP6_3',
                 opacity: 1,
-                color: 'rgba(228,26,28,1.0)',
+                color: 'rgba(255,0,0,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
@@ -174,13 +268,82 @@
         bounds_group.addLayer(layer_MinasBAP6_3);
         map.addLayer(layer_MinasBAP6_3);
         function pop_MinasBAP5_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">nombre</th>\
+                        <td>' + (feature.properties['nombre'] !== null ? Autolinker.link(String(feature.properties['nombre'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">mineral</th>\
+                        <td>' + (feature.properties['mineral'] !== null ? Autolinker.link(String(feature.properties['mineral'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['productor'] !== null ? Autolinker.link(String(feature.properties['productor'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['estado'] !== null ? Autolinker.link(String(feature.properties['estado'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NOM__CATAS'] !== null ? Autolinker.link(String(feature.properties['NOM__CATAS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUPERFICIE'] !== null ? Autolinker.link(String(feature.properties['SUPERFICIE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIPO DEREC'] !== null ? Autolinker.link(String(feature.properties['TIPO DEREC'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">titular</th>\
+                        <td>' + (feature.properties['titular'] !== null ? Autolinker.link(String(feature.properties['titular'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PERTN.'] !== null ? Autolinker.link(String(feature.properties['PERTN.'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESERVAS'] !== null ? Autolinker.link(String(feature.properties['RESERVAS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CODIF.'] !== null ? Autolinker.link(String(feature.properties['CODIF.'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>expediente</strong><br />' + (feature.properties['expediente'] !== null ? Autolinker.link(String(feature.properties['expediente'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIPO DER_1'] !== null ? Autolinker.link(String(feature.properties['TIPO DER_1'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['t_CATEGOR�'] !== null ? Autolinker.link(String(feature.properties['t_CATEGOR�'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUSTANCIA'] !== null ? Autolinker.link(String(feature.properties['SUSTANCIA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TITULAR_2'] !== null ? Autolinker.link(String(feature.properties['TITULAR_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ESTADO_2'] !== null ? Autolinker.link(String(feature.properties['ESTADO_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['partido'] !== null ? Autolinker.link(String(feature.properties['partido'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PERTN._2'] !== null ? Autolinker.link(String(feature.properties['PERTN._2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESERVAS_2'] !== null ? Autolinker.link(String(feature.properties['RESERVAS_2'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
         function style_MinasBAP5_4_0() {
             return {
                 pane: 'pane_MinasBAP5_4',
                 opacity: 1,
-                color: 'rgba(228,26,28,1.0)',
+                color: 'rgba(255,0,0,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
@@ -204,13 +367,82 @@
         bounds_group.addLayer(layer_MinasBAP5_4);
         map.addLayer(layer_MinasBAP5_4);
         function pop_MinasBAP4_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">nombre</th>\
+                        <td>' + (feature.properties['nombre'] !== null ? Autolinker.link(String(feature.properties['nombre'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">mineral</th>\
+                        <td>' + (feature.properties['mineral'] !== null ? Autolinker.link(String(feature.properties['mineral'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['productor'] !== null ? Autolinker.link(String(feature.properties['productor'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['estado'] !== null ? Autolinker.link(String(feature.properties['estado'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NOM__CATAS'] !== null ? Autolinker.link(String(feature.properties['NOM__CATAS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUPERFICIE'] !== null ? Autolinker.link(String(feature.properties['SUPERFICIE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIPO DEREC'] !== null ? Autolinker.link(String(feature.properties['TIPO DEREC'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">titular</th>\
+                        <td>' + (feature.properties['titular'] !== null ? Autolinker.link(String(feature.properties['titular'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PERTN.'] !== null ? Autolinker.link(String(feature.properties['PERTN.'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESERVAS'] !== null ? Autolinker.link(String(feature.properties['RESERVAS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CODIF.'] !== null ? Autolinker.link(String(feature.properties['CODIF.'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>expediente</strong><br />' + (feature.properties['expediente'] !== null ? Autolinker.link(String(feature.properties['expediente'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIPO DER_1'] !== null ? Autolinker.link(String(feature.properties['TIPO DER_1'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['t_CATEGOR�'] !== null ? Autolinker.link(String(feature.properties['t_CATEGOR�'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUSTANCIA'] !== null ? Autolinker.link(String(feature.properties['SUSTANCIA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TITULAR_2'] !== null ? Autolinker.link(String(feature.properties['TITULAR_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ESTADO_2'] !== null ? Autolinker.link(String(feature.properties['ESTADO_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['partido'] !== null ? Autolinker.link(String(feature.properties['partido'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PERTN._2'] !== null ? Autolinker.link(String(feature.properties['PERTN._2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESERVAS_2'] !== null ? Autolinker.link(String(feature.properties['RESERVAS_2'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
         function style_MinasBAP4_5_0() {
             return {
                 pane: 'pane_MinasBAP4_5',
                 opacity: 1,
-                color: 'rgba(228,26,28,1.0)',
+                color: 'rgba(255,0,0,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
@@ -234,6 +466,75 @@
         bounds_group.addLayer(layer_MinasBAP4_5);
         map.addLayer(layer_MinasBAP4_5);
         function pop_ManifestacionesBAP5_6(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">nombre</th>\
+                        <td>' + (feature.properties['nombre'] !== null ? Autolinker.link(String(feature.properties['nombre'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">mineral</th>\
+                        <td>' + (feature.properties['mineral'] !== null ? Autolinker.link(String(feature.properties['mineral'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['productor'] !== null ? Autolinker.link(String(feature.properties['productor'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['estado'] !== null ? Autolinker.link(String(feature.properties['estado'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NOM__CATAS'] !== null ? Autolinker.link(String(feature.properties['NOM__CATAS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUPERFICIE'] !== null ? Autolinker.link(String(feature.properties['SUPERFICIE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIPO DEREC'] !== null ? Autolinker.link(String(feature.properties['TIPO DEREC'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">titular</th>\
+                        <td>' + (feature.properties['titular'] !== null ? Autolinker.link(String(feature.properties['titular'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PERTN.'] !== null ? Autolinker.link(String(feature.properties['PERTN.'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESERVAS'] !== null ? Autolinker.link(String(feature.properties['RESERVAS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CODIF.'] !== null ? Autolinker.link(String(feature.properties['CODIF.'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>expediente</strong><br />' + (feature.properties['expediente'] !== null ? Autolinker.link(String(feature.properties['expediente'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIPO DER_1'] !== null ? Autolinker.link(String(feature.properties['TIPO DER_1'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['t_CATEGOR�'] !== null ? Autolinker.link(String(feature.properties['t_CATEGOR�'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUSTANCIA'] !== null ? Autolinker.link(String(feature.properties['SUSTANCIA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TITULAR_2'] !== null ? Autolinker.link(String(feature.properties['TITULAR_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ESTADO_2'] !== null ? Autolinker.link(String(feature.properties['ESTADO_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['partido'] !== null ? Autolinker.link(String(feature.properties['partido'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PERTN._2'] !== null ? Autolinker.link(String(feature.properties['PERTN._2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESERVAS_2'] !== null ? Autolinker.link(String(feature.properties['RESERVAS_2'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
         function style_ManifestacionesBAP5_6_0() {
@@ -264,6 +565,75 @@
         bounds_group.addLayer(layer_ManifestacionesBAP5_6);
         map.addLayer(layer_ManifestacionesBAP5_6);
         function pop_ManifestacionesBAP4_7(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">nombre</th>\
+                        <td>' + (feature.properties['nombre'] !== null ? Autolinker.link(String(feature.properties['nombre'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">mineral</th>\
+                        <td>' + (feature.properties['mineral'] !== null ? Autolinker.link(String(feature.properties['mineral'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['productor'] !== null ? Autolinker.link(String(feature.properties['productor'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['estado'] !== null ? Autolinker.link(String(feature.properties['estado'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NOM__CATAS'] !== null ? Autolinker.link(String(feature.properties['NOM__CATAS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUPERFICIE'] !== null ? Autolinker.link(String(feature.properties['SUPERFICIE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIPO DEREC'] !== null ? Autolinker.link(String(feature.properties['TIPO DEREC'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">titular</th>\
+                        <td>' + (feature.properties['titular'] !== null ? Autolinker.link(String(feature.properties['titular'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PERTN.'] !== null ? Autolinker.link(String(feature.properties['PERTN.'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESERVAS'] !== null ? Autolinker.link(String(feature.properties['RESERVAS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CODIF.'] !== null ? Autolinker.link(String(feature.properties['CODIF.'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>expediente</strong><br />' + (feature.properties['expediente'] !== null ? Autolinker.link(String(feature.properties['expediente'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIPO DER_1'] !== null ? Autolinker.link(String(feature.properties['TIPO DER_1'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['t_CATEGOR�'] !== null ? Autolinker.link(String(feature.properties['t_CATEGOR�'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUSTANCIA'] !== null ? Autolinker.link(String(feature.properties['SUSTANCIA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TITULAR_2'] !== null ? Autolinker.link(String(feature.properties['TITULAR_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ESTADO_2'] !== null ? Autolinker.link(String(feature.properties['ESTADO_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['partido'] !== null ? Autolinker.link(String(feature.properties['partido'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PERTN._2'] !== null ? Autolinker.link(String(feature.properties['PERTN._2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESERVAS_2'] !== null ? Autolinker.link(String(feature.properties['RESERVAS_2'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
         function style_ManifestacionesBAP4_7_0() {
@@ -294,6 +664,75 @@
         bounds_group.addLayer(layer_ManifestacionesBAP4_7);
         map.addLayer(layer_ManifestacionesBAP4_7);
         function pop_CateoBAP5_8(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">nombre</th>\
+                        <td>' + (feature.properties['nombre'] !== null ? Autolinker.link(String(feature.properties['nombre'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">mineral</th>\
+                        <td>' + (feature.properties['mineral'] !== null ? Autolinker.link(String(feature.properties['mineral'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['productor'] !== null ? Autolinker.link(String(feature.properties['productor'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['estado'] !== null ? Autolinker.link(String(feature.properties['estado'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NOM__CATAS'] !== null ? Autolinker.link(String(feature.properties['NOM__CATAS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUPERFICIE'] !== null ? Autolinker.link(String(feature.properties['SUPERFICIE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIPO DEREC'] !== null ? Autolinker.link(String(feature.properties['TIPO DEREC'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">titular</th>\
+                        <td>' + (feature.properties['titular'] !== null ? Autolinker.link(String(feature.properties['titular'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PERTN.'] !== null ? Autolinker.link(String(feature.properties['PERTN.'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESERVAS'] !== null ? Autolinker.link(String(feature.properties['RESERVAS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CODIF.'] !== null ? Autolinker.link(String(feature.properties['CODIF.'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>expediente</strong><br />' + (feature.properties['expediente'] !== null ? Autolinker.link(String(feature.properties['expediente'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIPO DER_1'] !== null ? Autolinker.link(String(feature.properties['TIPO DER_1'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['t_CATEGOR�'] !== null ? Autolinker.link(String(feature.properties['t_CATEGOR�'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUSTANCIA'] !== null ? Autolinker.link(String(feature.properties['SUSTANCIA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TITULAR_2'] !== null ? Autolinker.link(String(feature.properties['TITULAR_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ESTADO_2'] !== null ? Autolinker.link(String(feature.properties['ESTADO_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['partido'] !== null ? Autolinker.link(String(feature.properties['partido'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PERTN._2'] !== null ? Autolinker.link(String(feature.properties['PERTN._2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESERVAS_2'] !== null ? Autolinker.link(String(feature.properties['RESERVAS_2'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
         function style_CateoBAP5_8_0() {
@@ -324,6 +763,75 @@
         bounds_group.addLayer(layer_CateoBAP5_8);
         map.addLayer(layer_CateoBAP5_8);
         function pop_CateoBAP4_9(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">nombre</th>\
+                        <td>' + (feature.properties['nombre'] !== null ? Autolinker.link(String(feature.properties['nombre'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">mineral</th>\
+                        <td>' + (feature.properties['mineral'] !== null ? Autolinker.link(String(feature.properties['mineral'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['productor'] !== null ? Autolinker.link(String(feature.properties['productor'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['estado'] !== null ? Autolinker.link(String(feature.properties['estado'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NOM__CATAS'] !== null ? Autolinker.link(String(feature.properties['NOM__CATAS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUPERFICIE'] !== null ? Autolinker.link(String(feature.properties['SUPERFICIE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIPO DEREC'] !== null ? Autolinker.link(String(feature.properties['TIPO DEREC'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">titular</th>\
+                        <td>' + (feature.properties['titular'] !== null ? Autolinker.link(String(feature.properties['titular'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PERTN.'] !== null ? Autolinker.link(String(feature.properties['PERTN.'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESERVAS'] !== null ? Autolinker.link(String(feature.properties['RESERVAS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CODIF.'] !== null ? Autolinker.link(String(feature.properties['CODIF.'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>expediente</strong><br />' + (feature.properties['expediente'] !== null ? Autolinker.link(String(feature.properties['expediente'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIPO DER_1'] !== null ? Autolinker.link(String(feature.properties['TIPO DER_1'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['t_CATEGOR�'] !== null ? Autolinker.link(String(feature.properties['t_CATEGOR�'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUSTANCIA'] !== null ? Autolinker.link(String(feature.properties['SUSTANCIA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TITULAR_2'] !== null ? Autolinker.link(String(feature.properties['TITULAR_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ESTADO_2'] !== null ? Autolinker.link(String(feature.properties['ESTADO_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['partido'] !== null ? Autolinker.link(String(feature.properties['partido'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PERTN._2'] !== null ? Autolinker.link(String(feature.properties['PERTN._2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESERVAS_2'] !== null ? Autolinker.link(String(feature.properties['RESERVAS_2'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
         function style_CateoBAP4_9_0() {
@@ -354,6 +862,75 @@
         bounds_group.addLayer(layer_CateoBAP4_9);
         map.addLayer(layer_CateoBAP4_9);
         function pop_CanterasBAP6_10(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">nombre</th>\
+                        <td>' + (feature.properties['nombre'] !== null ? Autolinker.link(String(feature.properties['nombre'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">mineral</th>\
+                        <td>' + (feature.properties['mineral'] !== null ? Autolinker.link(String(feature.properties['mineral'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['productor'] !== null ? Autolinker.link(String(feature.properties['productor'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['estado'] !== null ? Autolinker.link(String(feature.properties['estado'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NOM__CATAS'] !== null ? Autolinker.link(String(feature.properties['NOM__CATAS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUPERFICIE'] !== null ? Autolinker.link(String(feature.properties['SUPERFICIE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIPO DEREC'] !== null ? Autolinker.link(String(feature.properties['TIPO DEREC'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">titular</th>\
+                        <td>' + (feature.properties['titular'] !== null ? Autolinker.link(String(feature.properties['titular'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PERTN.'] !== null ? Autolinker.link(String(feature.properties['PERTN.'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESERVAS'] !== null ? Autolinker.link(String(feature.properties['RESERVAS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CODIF.'] !== null ? Autolinker.link(String(feature.properties['CODIF.'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>expediente</strong><br />' + (feature.properties['expediente'] !== null ? Autolinker.link(String(feature.properties['expediente'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIPO DER_1'] !== null ? Autolinker.link(String(feature.properties['TIPO DER_1'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['t_CATEGOR�'] !== null ? Autolinker.link(String(feature.properties['t_CATEGOR�'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUSTANCIA'] !== null ? Autolinker.link(String(feature.properties['SUSTANCIA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TITULAR_2'] !== null ? Autolinker.link(String(feature.properties['TITULAR_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ESTADO_2'] !== null ? Autolinker.link(String(feature.properties['ESTADO_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['partido'] !== null ? Autolinker.link(String(feature.properties['partido'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PERTN._2'] !== null ? Autolinker.link(String(feature.properties['PERTN._2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESERVAS_2'] !== null ? Autolinker.link(String(feature.properties['RESERVAS_2'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
         function style_CanterasBAP6_10_0() {
@@ -384,6 +961,75 @@
         bounds_group.addLayer(layer_CanterasBAP6_10);
         map.addLayer(layer_CanterasBAP6_10);
         function pop_CanterasBAP5_11(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">nombre</th>\
+                        <td>' + (feature.properties['nombre'] !== null ? Autolinker.link(String(feature.properties['nombre'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">mineral</th>\
+                        <td>' + (feature.properties['mineral'] !== null ? Autolinker.link(String(feature.properties['mineral'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['productor'] !== null ? Autolinker.link(String(feature.properties['productor'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['estado'] !== null ? Autolinker.link(String(feature.properties['estado'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NOM__CATAS'] !== null ? Autolinker.link(String(feature.properties['NOM__CATAS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUPERFICIE'] !== null ? Autolinker.link(String(feature.properties['SUPERFICIE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIPO DEREC'] !== null ? Autolinker.link(String(feature.properties['TIPO DEREC'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">titular</th>\
+                        <td>' + (feature.properties['titular'] !== null ? Autolinker.link(String(feature.properties['titular'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PERTN.'] !== null ? Autolinker.link(String(feature.properties['PERTN.'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESERVAS'] !== null ? Autolinker.link(String(feature.properties['RESERVAS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CODIF.'] !== null ? Autolinker.link(String(feature.properties['CODIF.'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>expediente</strong><br />' + (feature.properties['expediente'] !== null ? Autolinker.link(String(feature.properties['expediente'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIPO DER_1'] !== null ? Autolinker.link(String(feature.properties['TIPO DER_1'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['t_CATEGOR�'] !== null ? Autolinker.link(String(feature.properties['t_CATEGOR�'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUSTANCIA'] !== null ? Autolinker.link(String(feature.properties['SUSTANCIA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TITULAR_2'] !== null ? Autolinker.link(String(feature.properties['TITULAR_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ESTADO_2'] !== null ? Autolinker.link(String(feature.properties['ESTADO_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['partido'] !== null ? Autolinker.link(String(feature.properties['partido'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PERTN._2'] !== null ? Autolinker.link(String(feature.properties['PERTN._2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESERVAS_2'] !== null ? Autolinker.link(String(feature.properties['RESERVAS_2'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
         function style_CanterasBAP5_11_0() {
@@ -414,6 +1060,75 @@
         bounds_group.addLayer(layer_CanterasBAP5_11);
         map.addLayer(layer_CanterasBAP5_11);
         function pop_CanterasBAP4_12(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">nombre</th>\
+                        <td>' + (feature.properties['nombre'] !== null ? Autolinker.link(String(feature.properties['nombre'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">mineral</th>\
+                        <td>' + (feature.properties['mineral'] !== null ? Autolinker.link(String(feature.properties['mineral'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['productor'] !== null ? Autolinker.link(String(feature.properties['productor'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['estado'] !== null ? Autolinker.link(String(feature.properties['estado'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NOM__CATAS'] !== null ? Autolinker.link(String(feature.properties['NOM__CATAS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUPERFICIE'] !== null ? Autolinker.link(String(feature.properties['SUPERFICIE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIPO DEREC'] !== null ? Autolinker.link(String(feature.properties['TIPO DEREC'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">titular</th>\
+                        <td>' + (feature.properties['titular'] !== null ? Autolinker.link(String(feature.properties['titular'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PERTN.'] !== null ? Autolinker.link(String(feature.properties['PERTN.'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESERVAS'] !== null ? Autolinker.link(String(feature.properties['RESERVAS'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CODIF.'] !== null ? Autolinker.link(String(feature.properties['CODIF.'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>expediente</strong><br />' + (feature.properties['expediente'] !== null ? Autolinker.link(String(feature.properties['expediente'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TIPO DER_1'] !== null ? Autolinker.link(String(feature.properties['TIPO DER_1'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['t_CATEGOR�'] !== null ? Autolinker.link(String(feature.properties['t_CATEGOR�'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SUSTANCIA'] !== null ? Autolinker.link(String(feature.properties['SUSTANCIA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['TITULAR_2'] !== null ? Autolinker.link(String(feature.properties['TITULAR_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ESTADO_2'] !== null ? Autolinker.link(String(feature.properties['ESTADO_2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['partido'] !== null ? Autolinker.link(String(feature.properties['partido'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PERTN._2'] !== null ? Autolinker.link(String(feature.properties['PERTN._2'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RESERVAS_2'] !== null ? Autolinker.link(String(feature.properties['RESERVAS_2'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
         function style_CanterasBAP4_12_0() {
@@ -443,66 +1158,8 @@
         });
         bounds_group.addLayer(layer_CanterasBAP4_12);
         map.addLayer(layer_CanterasBAP4_12);
-        var layer_OpenStreetMap_13 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            opacity: 1.0,
-            attribution: '',
-        });
-        layer_OpenStreetMap_13;
-        map.addLayer(layer_OpenStreetMap_13);
-        var layer_googlesat_14 = L.tileLayer('http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}', {
-            opacity: 1.0,
-            attribution: '',
-        });
-        layer_googlesat_14;
-        map.addLayer(layer_googlesat_14);
-        function pop_ARGENTINA_latlong_WGS84_15(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['NOMBRE'] !== null ? Autolinker.link(String(feature.properties['NOMBRE'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['PAIS'] !== null ? Autolinker.link(String(feature.properties['PAIS'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['POBLACION'] !== null ? Autolinker.link(String(feature.properties['POBLACION'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['TIPO'] !== null ? Autolinker.link(String(feature.properties['TIPO'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['SUP__KM2_'] !== null ? Autolinker.link(String(feature.properties['SUP__KM2_'])) : '') + '</td>\
-                    </tr>\
-                </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
-        }
-
-        function style_ARGENTINA_latlong_WGS84_15_0() {
-            return {
-                pane: 'pane_ARGENTINA_latlong_WGS84_15',
-                opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 4.0, 
-                fillOpacity: 0,
-                interactive: true,
-            }
-        }
-        map.createPane('pane_ARGENTINA_latlong_WGS84_15');
-        map.getPane('pane_ARGENTINA_latlong_WGS84_15').style.zIndex = 415;
-        map.getPane('pane_ARGENTINA_latlong_WGS84_15').style['mix-blend-mode'] = 'normal';
-        var layer_ARGENTINA_latlong_WGS84_15 = new L.geoJson(json_ARGENTINA_latlong_WGS84_15, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_ARGENTINA_latlong_WGS84_15',
-            layerName: 'layer_ARGENTINA_latlong_WGS84_15',
-            pane: 'pane_ARGENTINA_latlong_WGS84_15',
-            onEachFeature: pop_ARGENTINA_latlong_WGS84_15,
-            style: style_ARGENTINA_latlong_WGS84_15_0,
-        });
-        bounds_group.addLayer(layer_ARGENTINA_latlong_WGS84_15);
-        map.addLayer(layer_ARGENTINA_latlong_WGS84_15);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/CanterasBAP4_12.png" /> Canteras BA P4': layer_CanterasBAP4_12,'<img src="legend/CanterasBAP5_11.png" /> Canteras BA P5': layer_CanterasBAP5_11,'<img src="legend/CanterasBAP6_10.png" /> Canteras BA P6': layer_CanterasBAP6_10,'<img src="legend/CateoBAP4_9.png" /> Cateo BA P4': layer_CateoBAP4_9,'<img src="legend/CateoBAP5_8.png" /> Cateo BA P5': layer_CateoBAP5_8,'<img src="legend/ManifestacionesBAP4_7.png" /> Manifestaciones BA P4': layer_ManifestacionesBAP4_7,'<img src="legend/ManifestacionesBAP5_6.png" /> Manifestaciones BA P5': layer_ManifestacionesBAP5_6,'<img src="legend/MinasBAP4_5.png" /> Minas BA P4': layer_MinasBAP4_5,'<img src="legend/MinasBAP5_4.png" /> Minas BA P5': layer_MinasBAP5_4,'<img src="legend/MinasBAP6_3.png" /> Minas BA P6': layer_MinasBAP6_3,'<img src="legend/BADepartamento_2.png" /> BA Departamento': layer_BADepartamento_2,'<img src="legend/ArgentinaProvincias_1.png" /> Argentina - Provincias': layer_ArgentinaProvincias_1,"google sat": layer_googlesat_0,},{collapsed:false}).addTo(map);
         setBounds();
         </script>
     </body>
